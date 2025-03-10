@@ -1,0 +1,22 @@
+stages:
+  - build
+  - deploy
+
+build-job:
+  stage: build
+  image: node:18
+  script:
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+
+deploy-job:
+  stage: deploy
+  image: node:18
+  script:
+    - npm install -g netlify-cli
+    - netlify deploy --prod --dir=dist/ --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_ID
+  only:
+    - main
