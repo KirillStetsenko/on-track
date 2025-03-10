@@ -3,7 +3,8 @@
 <template>
   <div class="bg-gray-700 h-screen">
     <h1 class="text-5xl text-blue-500">
-      Hello. This is test file with token and ID. Control test. All right
+      Deploy to <span class="text-cyan-300">Netlify</span> and
+      <span class="text-orange-400"> Vercel </span>
     </h1>
   </div>
 </template>
