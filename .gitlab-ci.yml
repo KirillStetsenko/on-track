@@ -20,3 +20,13 @@ deploy-job:
     - netlify deploy --prod --dir=dist/ --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_ID
   only:
     - main
+
+deploy-vercel:
+  stage: deploy
+  script:
+    - npm install -g vercel
+    - vercel pull --yes --token $VERCEL_TOKEN
+    - vercel build --token $VERCEL_TOKEN
+    - vercel deploy --prod --token $VERCEL_TOKEN
+  only:
+    - main
