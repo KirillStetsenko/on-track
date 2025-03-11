@@ -6,6 +6,7 @@
       Deploy to <span class="text-cyan-300">Netlify</span> and
       <span class="text-orange-400"> Vercel </span>!
     </h1>
+    <div class="text-amber-300 text-5xl">FINAL TEST</div>
   </div>
 </template>
 
