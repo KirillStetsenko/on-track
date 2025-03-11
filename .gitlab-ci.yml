@@ -2,9 +2,6 @@ stages:
   - build
   - deploy
 
-variables:
-  NODE_ENV: production
-
 before_script:
   - npm install
 
