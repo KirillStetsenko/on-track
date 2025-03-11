@@ -29,7 +29,7 @@ deploy-vercel:
   image: node:18
   script:
     - npm install -g vercel
-    - vercel deploy --prod --token $VERCEL_TOKEN
+    - vercel deploy --yes --prod --token $VERCEL_TOKEN
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
       when: on_success
