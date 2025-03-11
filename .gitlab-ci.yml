@@ -3,7 +3,7 @@ stages:
   - deploy
 
 before_script:
-  - npm install
+  - npm install --production=false
 
 build:
   stage: build
