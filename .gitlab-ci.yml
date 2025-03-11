@@ -26,8 +26,8 @@ deploy-vercel:
   image: node:18
   script:
     - npm install -g vercel
-    - vercel pull --yes --token $VERCEL_TOKEN
-    - vercel build --token $VERCEL_TOKEN
-    - vercel deploy --prod --token $VERCEL_TOKEN
+    - vercel pull --yes --token $VERCEL_ID
+    - vercel build --token $VERCEL_ID
+    - vercel deploy --prod --token $VERCEL_ID
   only:
     - main
