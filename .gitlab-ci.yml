@@ -2,32 +2,37 @@ stages:
   - build
   - deploy
 
-build-job:
+variables:
+  NODE_ENV: production
+
+before_script:
+  - npm install
+
+build:
   stage: build
   image: node:18
   script:
-    - npm install
     - npm run build
   artifacts:
     paths:
       - dist/
 
-deploy-job:
+deploy-netlify:
   stage: deploy
   image: node:18
   script:
     - npm install -g netlify-cli
-    - netlify deploy --prod --dir=dist/ --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_ID
-  only:
-    - main
+    - netlify deploy --prod --dir=dist/
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: on_success
 
 deploy-vercel:
   stage: deploy
   image: node:18
   script:
     - npm install -g vercel
-    - vercel pull --yes --token $VERCEL_TOKEN
-    - vercel build --token $VERCEL_TOKEN
     - vercel deploy --prod --token $VERCEL_TOKEN
-  only:
-    - main
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: on_success
